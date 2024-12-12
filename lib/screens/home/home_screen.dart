@@ -50,18 +50,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 16),
-                child: Text(
-                  'Hope you have a great day ahead!',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
+              const SizedBox(height: 16),
               EWallet(),
-              const SizedBox(height: 24),
+              const SizedBox(height: 16),
               Container(
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
