@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wesbeng/constants/notifications.dart';
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});
@@ -8,21 +9,6 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
-  List data = [
-    {
-      'title': 'Reminder',
-      'description': 'Jadwal pengambilan sampah anorganik hari ini',
-    },
-    {
-      'title': 'Reminder',
-      'description': 'Jadwal pengambilan sampah organik hari ini',
-    },
-    {
-      'title': 'Reminder',
-      'description': 'Jadwal pengambilan sampah anorganik besok',
-    },
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +24,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       body: Padding(
         padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
         child: ListView.builder(
-          itemCount: data.length,
+          itemCount: notifications.length,
           itemBuilder: (context, index) {
             return Card(
               shape: RoundedRectangleBorder(
@@ -60,8 +46,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     ),
                   ),
                 ),
-                title: Text(data[index]['title']),
-                subtitle: Text(data[index]['description']),
+                title: Text(notifications[index]['title']),
+                subtitle: Text(notifications[index]['description']),
               ),
             );
           },
