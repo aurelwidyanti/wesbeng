@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:heroicons_flutter/heroicons_flutter.dart';
 import 'package:wesbeng/screens/home/home_screen.dart';
 import 'package:wesbeng/screens/blog/blog_screen.dart';
-import 'package:wesbeng/screens/location/location_screen.dart';
 import 'package:wesbeng/screens/profile/profile_screen.dart';
 
 class Entrypoint extends StatefulWidget {
@@ -16,7 +15,6 @@ class _EntrypointState extends State<Entrypoint> {
   List screens = [
     const HomeScreen(),
     const BlogScreen(),
-    LocationScreen(),
     const ProfileScreen(),
   ];
 
@@ -50,12 +48,6 @@ class _EntrypointState extends State<Entrypoint> {
                   HeroiconsSolid.globeAlt,
                 ),
                 label: 'Blog',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  HeroiconsSolid.map,
-                ),
-                label: 'Location',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
