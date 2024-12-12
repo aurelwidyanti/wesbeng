@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wesbeng/constants/articles.dart';
 import 'package:wesbeng/screens/blog/widgets/article_card.dart';
+import 'package:wesbeng/screens/blog/widgets/article_scroll_view.dart';
 import 'package:wesbeng/widgets/category_chip.dart';
 
 class BlogScreen extends StatefulWidget {
@@ -45,79 +46,38 @@ class _BlogScreenState extends State<BlogScreen> {
                 ),
               ),
               const SizedBox(height: 8),
-              Expanded(
+              const Expanded(
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         "Recent Articles",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: articles.map((article) {
-                            return SizedBox(
-                              width: 360,
-                              child: ArticleCard(
-                                category: article['category'],
-                                date: article['date'],
-                                title: article['title'],
-                                image: article['image'],
-                                description: article['description'],
-                              ),
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      const Text(
+                      ArticleScrollView(),
+                      SizedBox(height: 8),
+                      Text(
                         "Recent Articles",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 8),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: articles.map((article) {
-                            return SizedBox(
-                              width: 360,
-                              child: ArticleCard(
-                                category: article['category'],
-                                date: article['date'],
-                                title: article['title'],
-                                image: article['image'],
-                                description: article['description'],
-                              ),
-                            );
-                          }).toList(),
+                      SizedBox(height: 8),
+                      ArticleScrollView(),
+                      SizedBox(height: 8),
+                      Text(
+                        "Recent Articles",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 8),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: articles.map((article) {
-                            return SizedBox(
-                              width: 360,
-                              child: ArticleCard(
-                                category: article['category'],
-                                date: article['date'],
-                                title: article['title'],
-                                image: article['image'],
-                                description: article['description'],
-                              ),
-                            );
-                          }).toList(),
-                        ),
-                      ),
+                      ArticleScrollView(),
                     ],
                   ),
                 ),
