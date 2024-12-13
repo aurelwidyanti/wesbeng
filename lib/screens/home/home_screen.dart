@@ -25,42 +25,60 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
-          child: ListView(
-            shrinkWrap: true,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Greetings(),
-                  const Spacer(),
-                  IconButton(
-                    icon: const Icon(
-                      HeroiconsSolid.bellAlert,
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const NotificationScreen(),
+        child: ListView(
+          shrinkWrap: true,
+          children: [
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Positioned(
+                  child: Container(
+                      height: 200, color: Theme.of(context).primaryColor),
+                ),
+                Positioned(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Greetings(),
+                      const Spacer(),
+                      IconButton(
+                        icon: const Icon(
+                          HeroiconsSolid.bellAlert,
+                          color: Colors.black,
                         ),
-                      );
-                    },
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const NotificationScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              EWallet(),
-              const SizedBox(height: 16),
-              Container(
+                ),
+                Positioned(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  top: 100,
+                  child: const Padding(
+                    padding: EdgeInsets.all(24),
+                    child: EWallet(),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 64),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Container(
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: Colors.grey[300]!,
                     width: 1,
                   ),
-                  color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: SfDateRangePicker(
@@ -79,34 +97,41 @@ class _HomeScreenState extends State<HomeScreen> {
                   controller: _datePickerController,
                 ),
               ),
-              const SizedBox(height: 16),
-              const Text(
-                'Trending Articles',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Trending Articles',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: articles.map((article) {
+                        return SizedBox(
+                          width: 360,
+                          child: ArticleCard(
+                            category: article['category'],
+                            date: article['date'],
+                            title: article['title'],
+                            image: article['image'],
+                            description: article['description'],
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 8),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: articles.map((article) {
-                    return SizedBox(
-                      width: 360,
-                      child: ArticleCard(
-                        category: article['category'],
-                        date: article['date'],
-                        title: article['title'],
-                        image: article['image'],
-                        description: article['description'],
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
