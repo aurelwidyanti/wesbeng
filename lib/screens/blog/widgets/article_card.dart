@@ -55,16 +55,25 @@ class ArticleCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  category,
-                  style: const TextStyle(
-                    color: Colors.grey,
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  child: Text(
+                    category,
+                    style: const TextStyle(
+                      color: Colors.black,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 8),
                 Container(
                   height: 160,
-                  color: Colors.grey[300],
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                  ),
                   child: Image.network(
                     image,
                     fit: BoxFit.cover,
