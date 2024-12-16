@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wesbeng/constants/articles.dart';
-import 'package:wesbeng/screens/blog/widgets/article_card.dart';
 import 'package:wesbeng/screens/blog/widgets/article_scroll_view.dart';
 import 'package:wesbeng/widgets/category_chip.dart';
 
