@@ -10,17 +10,17 @@ class Greetings extends StatefulWidget {
 class _GreetingsState extends State<Greetings> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: const Column(
+    return const Padding(
+      padding: EdgeInsets.all(0),
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Good Morning,',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
+            'Morning,  ',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           Text(
-            'Wesley',
+            'Aurel!',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ],
