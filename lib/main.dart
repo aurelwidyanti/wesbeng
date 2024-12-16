@@ -1,9 +1,6 @@
-import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wesbeng/screens/splash_screen.dart';
-
-DateTime get _now => DateTime.now();
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: const Color.fromRGBO(160, 214, 131, 1),
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        fontFamily: GoogleFonts.openSans().fontFamily,
+        fontFamily: GoogleFonts.lato().fontFamily,
       ),
       home: const SplashScreen(),
     );
