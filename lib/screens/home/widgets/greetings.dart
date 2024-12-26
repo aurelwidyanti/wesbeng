@@ -16,7 +16,7 @@ class _GreetingsState extends State<Greetings> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Morning,',
+            'Morning, ',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           Text(
