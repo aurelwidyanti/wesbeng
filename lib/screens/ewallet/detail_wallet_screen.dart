@@ -91,6 +91,14 @@ class DetailWalletScreen extends StatelessWidget {
                       itemCount: 5,
                       itemBuilder: (context, index) {
                         return Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            side: BorderSide(
+                              color: Colors.grey[300]!,
+                              width: 1,
+                            ),
+                          ),
+                          color: Colors.white,
                           child: ListTile(
                             leading: const Icon(Icons.monetization_on),
                             title: Text('Transaction ${index + 1}'),
