@@ -27,14 +27,14 @@ class _EWalletState extends State<EWallet> {
               color: Theme.of(context).primaryColor,
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
               child: Row(
                 children: [
                   const Text(
                     'E-Wallet',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
