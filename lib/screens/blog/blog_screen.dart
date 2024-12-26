@@ -19,15 +19,21 @@ class _BlogScreenState extends State<BlogScreen> {
           padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
           child: Column(
             children: [
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search articles',
-                  prefixIcon: const Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: const BorderSide(
-                      color: Colors.grey,
+              Container(
+                height: 60,
+                width: double.infinity,
+                alignment: Alignment.center,
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Search articles',
+                    prefixIcon: const Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide.none,
                     ),
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    contentPadding: const EdgeInsets.symmetric(vertical: 0),
                   ),
                 ),
               ),
