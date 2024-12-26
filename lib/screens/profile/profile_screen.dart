@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:heroicons_flutter/heroicons_flutter.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -46,7 +47,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ],
                       ),
                       Spacer(),
-                      Icon(Icons.edit),
+                      Icon(
+                        HeroiconsSolid.pencil,
+                        size: 20,
+                      ),
                     ],
                   ),
                   const SizedBox(height: 24),
