@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:heroicons_flutter/heroicons_flutter.dart';
+import 'package:wesbeng/screens/ewallet/detail_wallet_screen.dart';
 
 class EWallet extends StatefulWidget {
   const EWallet({super.key});
@@ -44,7 +45,12 @@ class _EWalletState extends State<EWallet> {
                       color: Colors.white,
                     ),
                     onPressed: () {
-                      // Navigate to E-Wallet screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const DetailWalletScreen(),
+                        ),
+                      );
                     },
                   ),
                 ],
