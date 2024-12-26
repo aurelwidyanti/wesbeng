@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:heroicons_flutter/heroicons_flutter.dart';
 import 'package:wesbeng/constants/articles.dart';
 import 'package:wesbeng/screens/blog/widgets/article_card.dart';
-import 'package:wesbeng/screens/home/widgets/e_wallet.dart';
+import 'package:wesbeng/widgets/e_wallet.dart';
 import 'package:wesbeng/screens/home/widgets/greetings.dart';
 import 'package:wesbeng/screens/notification/notification_screen.dart';
 
