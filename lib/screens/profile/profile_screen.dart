@@ -23,9 +23,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: [
                       CircleAvatar(
                         radius: 40,
-                        backgroundImage: NetworkImage(
-                          'https://via.placeholder.com/150',
-                        ),
+                        backgroundColor: Colors.grey,
                       ),
                       SizedBox(width: 16),
                       Column(
