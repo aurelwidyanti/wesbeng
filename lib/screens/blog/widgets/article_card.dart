@@ -25,7 +25,13 @@ class ArticleCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const DetailBlogScreen(),
+            builder: (context) => DetailBlogScreen(
+              title: title,
+              description: description,
+              date: date,
+              image: image,
+              category: category,
+            ),
           ),
         );
       },
