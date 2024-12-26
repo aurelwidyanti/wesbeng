@@ -32,7 +32,7 @@ class _CategoryChipState extends State<CategoryChip> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
           side: BorderSide(
-            color: Theme.of(context).primaryColor,
+            color: _isSelected ? Colors.transparent : Colors.grey,
             width: 1,
           ),
         ),
