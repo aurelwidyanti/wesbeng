@@ -15,6 +15,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
         title: const Text(
           'Notification',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
