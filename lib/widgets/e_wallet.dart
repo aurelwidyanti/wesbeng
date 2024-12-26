@@ -91,7 +91,7 @@ class _EWalletState extends State<EWallet> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        _isHidden ? '**********' : 'Rp 1.500.000',
+                        _isHidden ? '**********' : 'Rp5000,00',
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 20,
