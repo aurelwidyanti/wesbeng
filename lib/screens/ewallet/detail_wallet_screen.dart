@@ -21,11 +21,12 @@ class DetailWalletScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
+          padding: const EdgeInsets.only(bottom: 16),
           child: Column(
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                height: 320,
+                padding: const EdgeInsets.only(bottom: 24),
+                height: 300,
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topRight,
@@ -43,7 +44,7 @@ class DetailWalletScreen extends StatelessWidget {
                   children: [
                     const Spacer(),
                     const Text(
-                      "Rp5000",
+                      "Rp5000,00",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
