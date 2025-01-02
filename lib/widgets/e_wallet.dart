@@ -102,7 +102,7 @@ class _EWalletState extends State<EWallet> {
                         _isHidden ? '**********' : 'Rp${user!.balance!}',
                         style: const TextStyle(
                           color: Colors.black,
-                          fontSize: 15,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
