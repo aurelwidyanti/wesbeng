@@ -40,6 +40,14 @@ class DetailBlogScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 16),
               Container(
                 height: 160,
                 decoration: BoxDecoration(
@@ -61,23 +69,15 @@ class DetailBlogScreen extends StatelessWidget {
                 date,
                 style: TextStyle(
                   color: Colors.grey[600],
-                  fontSize: 14,
+                  fontStyle: FontStyle.italic,
                 ),
               ),
               const SizedBox(height: 8),
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 16),
               Expanded(
                 child: SingleChildScrollView(
                   child: Text(
                     description,
-                    style: const TextStyle(fontSize: 16, height: 1.5),
+                    style: const TextStyle(fontSize: 14, height: 1.5),
                   ),
                 ),
               ),
