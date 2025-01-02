@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:heroicons_flutter/heroicons_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:wesbeng/providers/user_provider.dart';
 import 'package:wesbeng/screens/ewallet/detail_wallet_screen.dart';
+import 'package:wesbeng/services/api_service.dart';
 
 class EWallet extends StatefulWidget {
   const EWallet({super.key});
@@ -12,9 +15,14 @@ class EWallet extends StatefulWidget {
 
 class _EWalletState extends State<EWallet> {
   bool _isHidden = true;
+  final ApiService apiService = ApiService();
 
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
+
+    final user = userProvider.user;
+
     return Stack(
       children: [
         Positioned(
@@ -91,10 +99,10 @@ class _EWalletState extends State<EWallet> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        _isHidden ? '**********' : 'Rp5000,00',
+                        _isHidden ? '**********' : 'Rp${user!.balance!}',
                         style: const TextStyle(
                           color: Colors.black,
-                          fontSize: 20,
+                          fontSize: 15,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
