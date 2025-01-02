@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wesbeng/providers/cash_out_provider.dart';
 import 'package:wesbeng/providers/education_content_provider.dart';
 import 'package:wesbeng/providers/transaction_provider.dart';
 import 'package:wesbeng/providers/user_provider.dart';
@@ -23,6 +24,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(create: (_) => EducationContentProvider()),
         ChangeNotifierProvider(create: (_) => TransactionProvider()),
+        ChangeNotifierProvider(create: (_) => CashOutProvider()),
       ],
       child: MaterialApp(
         title: 'Wesbeng',
