@@ -47,14 +47,13 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 16),
               const EWallet(),
               const SizedBox(height: 16),
-              const SizedBox(height: 16),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
                     'Trending Articles',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
