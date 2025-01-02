@@ -36,7 +36,7 @@ class ArticleCard extends StatelessWidget {
         );
       },
       child: SizedBox(
-        height: 440,
+        height: 420,
         child: Card(
           elevation: 0,
           shape: RoundedRectangleBorder(
@@ -94,7 +94,6 @@ class ArticleCard extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text(
                   description,
-                  style: const TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 8),
                 Text(
