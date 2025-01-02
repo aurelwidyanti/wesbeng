@@ -58,7 +58,7 @@ class _BlogScreenState extends State<BlogScreen> {
                       Text(
                         "Recent Articles",
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -67,7 +67,7 @@ class _BlogScreenState extends State<BlogScreen> {
                       Text(
                         "Recent Articles",
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -77,7 +77,7 @@ class _BlogScreenState extends State<BlogScreen> {
                       Text(
                         "Recent Articles",
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
