@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
     this.backgroundColor = const Color.fromRGBO(160, 214, 131, 1),
     this.borderRadius = 12,
     this.fontSize = 16,
-    this.fontWeight = FontWeight.w500,
+    this.fontWeight = FontWeight.bold,
     this.textColor = Colors.white,
     this.elevation = 0,
   }) : super(key: key);
