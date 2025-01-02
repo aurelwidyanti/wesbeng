@@ -105,125 +105,164 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              padding: const EdgeInsets.only(top: 40),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Log In",
-                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 32,
-                          color: Theme.of(context).primaryColor,
-                        ),
+      body: SingleChildScrollView(
+        controller: _scrollController,
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.only(top: 40),
+                height: 200,
+                alignment: Alignment.topRight,
+                child: SvgPicture.asset(
+                  'assets/img/logo.svg',
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).primaryColor,
+                    BlendMode.srcIn,
                   ),
-                  SvgPicture.asset(
-                    'assets/img/logo.svg',
-                    colorFilter: ColorFilter.mode(
-                      Theme.of(context).primaryColor,
-                      BlendMode.srcIn,
-                    ),
-                    width: 24,
-                    height: 24,
-                  ),
-                ],
+                  width: 24,
+                  height: 24,
+                ),
               ),
-            ),
-            Spacer(),
-            Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      floatingLabelBehavior: FloatingLabelBehavior.never,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide.none,
-                      ),
-                      filled: true,
-                      fillColor: Colors.grey[200],
-                      contentPadding: const EdgeInsets.symmetric(
-                        vertical: 0,
-                        horizontal: 12,
-                      ),
+              Text(
+                "Log In",
+                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 32,
+                      color: Theme.of(context).primaryColor,
                     ),
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    keyboardType: TextInputType.emailAddress,
-                    controller: _emailController,
-                    focusNode: _emailFocusNode,
-                    validator: MultiValidator([
-                      RequiredValidator(errorText: 'Email is required'),
-                      EmailValidator(errorText: 'Enter a valid email address'),
-                    ]),
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _obscureText
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                          color: Colors.grey,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            _obscureText = !_obscureText;
-                          });
-                        },
-                      ),
-                      floatingLabelBehavior: FloatingLabelBehavior.never,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide.none,
-                      ),
-                      filled: true,
-                      fillColor: Colors.grey[200],
-                      contentPadding: const EdgeInsets.symmetric(
-                        vertical: 0,
-                        horizontal: 12,
-                      ),
-                    ),
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    keyboardType: TextInputType.visiblePassword,
-                    controller: _passwordController,
-                    focusNode: _passwordFocusNode,
-                    obscureText: _obscureText,
-                    validator:
-                        RequiredValidator(errorText: 'Password is required'),
-                  ),
-                ],
               ),
-            ),
-            const SizedBox(height: 32),
-            _isFetching
-                ? const Center(child: CircularProgressIndicator())
-                : SizedBox(
-                    width: double.infinity,
-                    height: 44,
-                    child: CustomButton(
-                      text: 'Login',
-                      onPressed: () => _login(context),
+              const SizedBox(height: 8),
+              Text(
+                "Welcome back! Log in to your account",
+                style: TextStyle(
+                  color: Colors.grey[600],
+                  fontSize: 15,
+                ),
+              ),
+              const SizedBox(height: 32),
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Email',
+                        labelStyle: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        floatingLabelBehavior: FloatingLabelBehavior.auto,
+                        focusColor: Theme.of(context).primaryColor,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: const BorderSide(
+                            color: Colors.black,
+                          ),
+                        ),
+                        floatingLabelStyle: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide.none,
+                        ),
+                        filled: true,
+                        fillColor: Colors.grey[200],
+                        contentPadding: const EdgeInsets.symmetric(
+                          vertical: 0,
+                          horizontal: 12,
+                        ),
+                      ),
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                      controller: _emailController,
+                      focusNode: _emailFocusNode,
+                      validator: MultiValidator([
+                        RequiredValidator(errorText: 'Email is required'),
+                        EmailValidator(
+                            errorText: 'Enter a valid email address'),
+                      ]),
                     ),
-                  ),
-            const Spacer(),
-          ],
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        labelStyle: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _obscureText
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _obscureText = !_obscureText;
+                            });
+                          },
+                        ),
+                        floatingLabelBehavior: FloatingLabelBehavior.auto,
+                        focusColor: Theme.of(context).primaryColor,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: const BorderSide(
+                            color: Colors.black,
+                          ),
+                        ),
+                        floatingLabelStyle: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide.none,
+                        ),
+                        filled: true,
+                        fillColor: Colors.grey[200],
+                        contentPadding: const EdgeInsets.symmetric(
+                          vertical: 0,
+                          horizontal: 12,
+                        ),
+                      ),
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      keyboardType: TextInputType.visiblePassword,
+                      controller: _passwordController,
+                      focusNode: _passwordFocusNode,
+                      obscureText: _obscureText,
+                      validator:
+                          RequiredValidator(errorText: 'Password is required'),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 32),
+              _isFetching
+                  ? const Center(child: CircularProgressIndicator())
+                  : SizedBox(
+                      width: double.infinity,
+                      height: 44,
+                      child: CustomButton(
+                        text: 'Login',
+                        onPressed: () => _login(context),
+                      ),
+                    ),
+            ],
+          ),
         ),
       ),
     );
