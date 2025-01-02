@@ -21,20 +21,20 @@ class _EWalletState extends State<EWallet> {
           child: Container(
             alignment: AlignmentDirectional.bottomStart,
             width: double.infinity,
-            height: 200,
+            height: 195,
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(20)),
               color: Theme.of(context).primaryColor,
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
               child: Row(
                 children: [
                   const Text(
                     'E-Wallet',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 16,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -85,7 +85,7 @@ class _EWalletState extends State<EWallet> {
                 children: [
                   const Text(
                     "Available balance",
-                    style: TextStyle(color: Colors.black, fontSize: 16),
+                    style: TextStyle(color: Colors.black, fontSize: 15),
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
