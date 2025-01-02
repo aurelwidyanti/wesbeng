@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:heroicons_flutter/heroicons_flutter.dart';
+import 'package:wesbeng/screens/ewallet/cash_out_screen.dart';
 import 'package:wesbeng/screens/ewallet/widgets/action_button.dart';
 
 class DetailWalletScreen extends StatelessWidget {
@@ -26,7 +27,8 @@ class DetailWalletScreen extends StatelessWidget {
             children: [
               Container(
                 padding: const EdgeInsets.only(bottom: 24),
-                height: 300,
+                height: 240,
+                width: double.infinity,
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topRight,
@@ -52,23 +54,16 @@ class DetailWalletScreen extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ActionButton(
-                          iconData: HeroiconsSolid.arrowRightOnRectangle,
-                          onPressed: () {
-                            // Top up functionality
-                          },
-                        ),
-                        const SizedBox(width: 16),
-                        ActionButton(
-                          iconData: HeroiconsSolid.queueList,
-                          onPressed: () {
-                            // Withdraw functionality
-                          },
-                        ),
-                      ],
+                    ActionButton(
+                      iconData: HeroiconsSolid.arrowRightOnRectangle,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CashOutScreen(),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -86,6 +81,7 @@ class DetailWalletScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    const SizedBox(height: 4),
                     ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -93,7 +89,7 @@ class DetailWalletScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return Card(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(16),
                             side: BorderSide(
                               color: Colors.grey[300]!,
                               width: 1,
@@ -101,10 +97,36 @@ class DetailWalletScreen extends StatelessWidget {
                           ),
                           color: Colors.white,
                           child: ListTile(
-                            leading: const Icon(Icons.monetization_on),
-                            title: Text('Transaction ${index + 1}'),
-                            subtitle: const Text('Details of the transaction'),
-                            trailing: const Text('-Rp1000'),
+                            title: Text(
+                              index % 2 == 0
+                                  ? 'Penarikan ke e-wallet'
+                                  : 'Uang masuk ke e-wallet',
+                              style: const TextStyle(
+                                fontSize: 15,
+                              ),
+                            ),
+                            subtitle: Text(
+                              '02/01/2025',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey[600],
+                              ),
+                            ),
+                            trailing: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  index % 2 == 0 ? '-Rp1000' : '+Rp1000',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: index % 2 == 0
+                                        ? Colors.red
+                                        : Colors.green,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       },
