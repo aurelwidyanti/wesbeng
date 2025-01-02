@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wesbeng/providers/cash_out_provider.dart';
 import 'package:wesbeng/screens/ewallet/widgets/wallet_modal.dart';
+import 'package:wesbeng/services/api_service.dart';
 import 'package:wesbeng/widgets/custom_button.dart';
 
 class CashOutScreen extends StatefulWidget {
@@ -13,9 +14,18 @@ class CashOutScreen extends StatefulWidget {
 
 class _CashOutScreenState extends State<CashOutScreen> {
   String? selectedBank;
+  final ApiService apiService = ApiService();
 
   @override
   Widget build(BuildContext context) {
+    final cashOutProvider = Provider.of<CashOutProvider>(context);
+
+    if (cashOutProvider.isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    final cashOuts = cashOutProvider.cashOuts;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -78,21 +88,27 @@ class _CashOutScreenState extends State<CashOutScreen> {
                           value == null ? 'Please select a bank' : null,
                     ),
                     const SizedBox(height: 16),
-                    SizedBox(
-                      width: double.infinity,
-                      height: 44,
-                      child: Consumer<CashOutProvider>(
-                        builder: (context, provider, child) {
-                          return CustomButton(
-                            onPressed: () {},
-                            text: 'Cash Out',
-                          );
-                        },
-                      ),
-                    )
                   ],
                 );
               },
+            ),
+            SizedBox(
+              width: double.infinity,
+              height: 44,
+              child: Consumer<CashOutProvider>(
+                builder: (context, provider, child) {
+                  return CustomButton(
+                    text: 'Cash Out',
+                    onPressed: () {
+                      provider.createCashOut(
+                          cashOuts.map((cashOut) => cashOut.amount).toString(),
+                          cashOuts
+                              .map((cashOut) => cashOut.ewalletName)
+                              .toString());
+                    },
+                  );
+                },
+              ),
             )
           ],
         ),
