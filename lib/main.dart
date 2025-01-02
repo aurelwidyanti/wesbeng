@@ -1,23 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:wesbeng/screens/splash_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:wesbeng/providers/education_content_provider.dart';
+import 'package:wesbeng/providers/transaction_provider.dart';
+import 'package:wesbeng/providers/user_provider.dart';
+import 'package:wesbeng/screens/auth/login_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Wesbeng',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: const Color.fromRGBO(160, 214, 131, 1),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        fontFamily: 'Inter',
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => EducationContentProvider()),
+        ChangeNotifierProvider(create: (_) => TransactionProvider()),
+      ],
+      child: MaterialApp(
+        title: 'Wesbeng',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: const Color.fromRGBO(160, 214, 131, 1),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          fontFamily: 'Inter',
+        ),
+        home: const LoginScreen(),
       ),
-      home: const SplashScreen(),
     );
   }
 }
