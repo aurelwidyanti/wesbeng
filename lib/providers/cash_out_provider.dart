@@ -31,13 +31,13 @@ class CashOutProvider with ChangeNotifier {
     }
   }
 
-  Future<void> createCashOut(String amount, String bank) async {
+  Future<void> createCashOut(String amount, String ewalletName) async {
     try {
       final response = await apiService.post(
         'request-cashout',
         {
           'amount': amount,
-          'bank': bank,
+          'ewallet_name': ewalletName,
         },
       );
 
