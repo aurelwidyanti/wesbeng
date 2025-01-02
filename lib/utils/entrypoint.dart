@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:heroicons_flutter/heroicons_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:wesbeng/providers/education_content_provider.dart';
+import 'package:wesbeng/providers/transaction_provider.dart';
+import 'package:wesbeng/providers/user_provider.dart';
 import 'package:wesbeng/screens/home/home_screen.dart';
 import 'package:wesbeng/screens/blog/blog_screen.dart';
 import 'package:wesbeng/screens/profile/profile_screen.dart';
@@ -12,18 +16,41 @@ class Entrypoint extends StatefulWidget {
 }
 
 class _EntrypointState extends State<Entrypoint> {
+  int selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _refreshData();
+    });
+  }
+
+  Future<void> _refreshData() async {
+    await Provider.of<UserProvider>(context, listen: false)
+        .fetchUserData(context);
+    await Provider.of<EducationContentProvider>(context, listen: false)
+        .fetchEducationContent();
+
+    if (mounted) {
+      await Provider.of<TransactionProvider>(context, listen: false)
+          .fetchTransactions();
+    }
+  }
+
   List screens = [
     const HomeScreen(),
     const BlogScreen(),
     const ProfileScreen(),
   ];
 
-  int selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[selectedIndex],
+      body: RefreshIndicator(
+        onRefresh: _refreshData,
+        child: screens[selectedIndex],
+      ),
       bottomNavigationBar: SizedBox(
         height: 80,
         child: BottomNavigationBar(
