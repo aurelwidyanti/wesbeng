@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:heroicons_flutter/heroicons_flutter.dart';
-import 'package:wesbeng/screens/ewallet/widgets/dropdown_wallet.dart';
+import 'package:provider/provider.dart';
+import 'package:wesbeng/providers/cash_out_provider.dart';
+import 'package:wesbeng/screens/ewallet/widgets/wallet_modal.dart';
 import 'package:wesbeng/widgets/custom_button.dart';
 
 class CashOutScreen extends StatefulWidget {
@@ -58,14 +59,13 @@ class _CashOutScreenState extends State<CashOutScreen> {
                         ),
                       ),
                       style: const TextStyle(
-                        fontSize: 17,
+                        fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
                       keyboardType: TextInputType.number,
                     ),
                     const SizedBox(height: 16),
-                    DropdownWallet(
-                      labelText: "Select Bank",
+                    WalletModal(
                       value: selectedBank,
                       items: const ['ShopeePay', 'OVO', 'DANA', 'LinkAja'],
                       onChanged: (String? newValue) {
@@ -81,13 +81,13 @@ class _CashOutScreenState extends State<CashOutScreen> {
                     SizedBox(
                       width: double.infinity,
                       height: 44,
-                      child: CustomButton(
-                        onPressed: () {
-                          if (state.validate()) {
-                            print('Cash Out');
-                          }
+                      child: Consumer<CashOutProvider>(
+                        builder: (context, provider, child) {
+                          return CustomButton(
+                            onPressed: () {},
+                            text: 'Cash Out',
+                          );
                         },
-                        text: 'Cash Out',
                       ),
                     )
                   ],
